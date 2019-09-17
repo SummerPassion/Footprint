@@ -1,0 +1,21 @@
+{
+    "name": "mustang/footprint",
+    "description": "thinkphp5.0 商城类项目基于redis的实现",
+    "type": "library",
+    "require": {
+        "mustang/utils": "^1.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "summerpassion",
+            "email": "695998135@qq.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Mustang\\Footprint\\": "src"
+        }
+    }
+}
