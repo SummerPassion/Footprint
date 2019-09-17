@@ -1,6 +1,6 @@
 {
     "name": "mustang/footprint",
-    "description": "thinkphp5.0 商城类项目基于redis的实现",
+    "description": "thinkphp5.0 商城 '足迹' 基于redis的实现，可自行扩展其他存储介质。",
     "type": "library",
     "require": {
         "mustang/utils": "^1.0"
