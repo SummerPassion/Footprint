@@ -7,8 +7,7 @@ composer require mustang/footprint
 ```
 
 ##在项目中使用footprint
->V1.0版本仅更新了以Redis为存储介质的历史存取，后期可能扩展其他存储介质。
-
+>V1.0版本仅更新了以Redis为存储介质的历史存取，后期可能扩展其他存储介质。 
 >需要在config.php中配置以下信息
 
 

@@ -40,7 +40,7 @@ class RedisDriver extends Driver
      * @param string|null $env 场景
      * @return bool|mixed
      */
-    public function log($val, $uid = null, $ord = self::SEQ, $env = self::DEFAULT)
+    public function log($val, $uid = null, $env = self::DEFAULT, $ord = self::SEQ)
     {
         if (!$val && !is_numeric($val)) {
             throw new \InvalidArgumentException("记录值不能为空。");
@@ -120,7 +120,7 @@ class RedisDriver extends Driver
      * @param string $env 场景
      * @return mixed|void
      */
-    public function get($end, $uid = null, $ord = self::SEQ, $env = self::DEFAULT)
+    public function get($end, $uid = null, $env = self::DEFAULT, $ord = self::SEQ)
     {
         $key = self::$fp_prefix . ($env ?: self::DEFAULT) . ':' . ($uid ? self::$user_prefix . $uid : '');
 
