@@ -29,6 +29,16 @@ abstract class Driver
     const DEFAULT = 'Default';
 
     /**
+     * 起始页
+     */
+    const PAGE = 1;
+
+    /**
+     * 每页数据量
+     */
+    const PAGESIZE = 10;
+
+    /**
      * 前缀
      * @var string
      */

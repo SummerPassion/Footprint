@@ -66,6 +66,20 @@ Footprint::log($val, $uid = null, $ord = self::SEQ, $env = self::DEFAULT);
 Footprint::get($end, $uid = null, $ord = self::SEQ, $env = self::DEFAULT);
 ```
 
+**分页获取**
+
+```php
+/**
+ * 分页获取
+ * @param int $uid 用户id
+ * @param int $page 第N页 N>0
+ * @param int $pageSize 页面大小
+ * @param string $env 场景
+ * @param string $ord 排序
+ */
+Footprint::pageQuery($uid, $page=1, $pageSize=10, $env = self::DEFAULT, $ord = self::SEQ);
+```
+
 **清理**
 
 ```php

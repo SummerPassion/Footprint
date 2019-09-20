@@ -34,7 +34,7 @@ class RedisDriver extends Driver
 
     /**
      * 记录
-     * @param string $val 记录纸
+     * @param string $val 记录值
      * @param null $uid 用户标识
      * @param string|null $ord 排序
      * @param string|null $env 场景
@@ -138,6 +138,43 @@ class RedisDriver extends Driver
         }
 
         return $this->redis_obj->{$method}($key, 0, $end - 1);
+    }
+
+    /**
+     * 分页获取
+     * @param int $uid 用户id
+     * @param int $page 第N页
+     * @param int $pageSize 页面大小
+     * @param string $env 场景
+     * @param string $ord 排序
+     */
+    public function pageQuery($uid, $page=self::PAGE, $pageSize=self::PAGESIZE, $env = self::DEFAULT, $ord = self::SEQ)
+    {
+        if (1 > $page) {
+            throw new \RuntimeException("不支持的[page]参数。");
+        }
+
+        if (0 > $pageSize) {
+            throw new \RuntimeException("不支持的[pageSize]参数。");
+        }
+
+        $key = self::$fp_prefix . ($env ?: self::DEFAULT) . ':' . ($uid ? self::$user_prefix . $uid : '');
+
+        $start = ($page-1)*$pageSize;
+        $end = $page*$pageSize-1;
+
+        switch ($ord) {
+            case self::HEAT:
+                $method = "zRevRange";
+                break;
+            case self::SEQ:
+                $method = "lRange";
+                break;
+            default:
+                throw new \RuntimeException("不支持的排序参数。");
+        }
+
+        return $this->redis_obj->{$method}($key, $start, $end);
     }
 
     /**
