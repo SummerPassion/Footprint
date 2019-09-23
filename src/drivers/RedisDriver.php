@@ -134,8 +134,6 @@ class RedisDriver extends Driver
     {
         $key = self::$fp_prefix . ($env ?: self::DEFAULT) . ':' . ($uid ? self::$user_prefix . $uid : '');
 
-        $end ?? $end = $end - 1;
-
         switch ($ord) {
             case self::HEAT:
                 $method = "zRevRange";
