@@ -149,6 +149,21 @@ class RedisDriver extends Driver
     }
 
     /**
+     * 获取list长度
+     * @param int $end 长度
+     * @param null $uid 用户标识
+     * @param string $ord 排序
+     * @param string $env 场景
+     * @return mixed|void
+     */
+    public function getListLen($uid = null, $env = self::DEFAULT, $ord = self::SEQ)
+    {
+        $key = self::$fp_prefix . ($env ?: self::DEFAULT) . ':' . ($uid ? self::$user_prefix . $uid : '');
+
+        return $this->redis_obj->lLen($key);
+    }
+
+    /**
      * 分页获取
      * @param int $uid 用户id
      * @param int $page 第N页
