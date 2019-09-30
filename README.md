@@ -91,3 +91,17 @@ Footprint::pageQuery($uid, $page=1, $pageSize=10, $env = self::DEFAULT, $ord = s
  */
 Footprint::clear($uid=null, $env=null);
 ```
+
+**获取list长度**
+
+```php
+/**
+ * 获取list长度
+ * @param int $end 长度
+ * @param null $uid 用户标识
+ * @param string $ord 排序
+ * @param string $env 场景
+ * @return mixed|void
+ */
+ ```
+Footprint::getListLen($uid = null, $env = self::DEFAULT, $ord = self::SEQ)
