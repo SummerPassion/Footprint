@@ -110,6 +110,7 @@ class RedisDriver extends Driver
             }
         }
 
+        $this->redis_obj->lRem($key, 0, $val);
         if (false === $this->redis_obj->lPush($key, $val)) {
             throw new \RuntimeException('记录时序排名历史异常！');
         }
