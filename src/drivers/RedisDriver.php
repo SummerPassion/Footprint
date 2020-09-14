@@ -99,16 +99,16 @@ class RedisDriver extends Driver
      */
     protected function logBySeq($key, $val)
     {
-//        if (false !== $pos = mb_strpos($val, '_')) {
-//            $rem_val = mb_substr($val, 0, mb_strpos($val, '_'));
-//            $list = $this->redis_obj->lRange($key, 0, -1);
-//            foreach($list as $k=>$v) {
-//                $v_sub = mb_substr($v, 0, mb_strpos($v, '_'));
-//                if ($rem_val == $v_sub) {
-//                    $this->redis_obj->lRem($key, 0, $v);
-//                }
-//            }
-//        }
+        if (false !== $pos = mb_strpos($val, '_')) {
+            $rem_val = mb_substr($val, 0, mb_strpos($val, '_'));
+            $list = $this->redis_obj->lRange($key, 0, -1);
+            foreach($list as $k=>$v) {
+                $v_sub = mb_substr($v, 0, mb_strpos($v, '_'));
+                if ($rem_val == $v_sub) {
+                    $this->redis_obj->lRem($key, 0, $v);
+                }
+            }
+        }
 
         $this->redis_obj->lRem($key, 0, $val);
         if (false === $this->redis_obj->lPush($key, $val)) {
