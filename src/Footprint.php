@@ -14,7 +14,7 @@ use Mustang\Footprint\exception\FootprintException;
  *  热门搜索
  *  浏览足迹
  * Class Footprint
- * @method static Footprint log($val, $uid = null, $env = self::DEFAULT, $ord = self::SEQ) 记录
+ * @method static Footprint log($val, $uid = null, $env = self::DEFAULT, $ord = self::SEQ, $step=1) 记录
  * @method static Footprint get($end, $uid = null, $env = self::DEFAULT, $ord = self::SEQ) 获取
  * @method static Footprint getListLen($uid = null, $env = self::DEFAULT, $ord = self::SEQ) 获取list长度
  * @method static Footprint pageQuery($uid, $page=1, $pageSize=10, $env = self::DEFAULT, $ord = self::SEQ) 分页获取

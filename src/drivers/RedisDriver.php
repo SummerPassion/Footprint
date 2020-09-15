@@ -40,7 +40,7 @@ class RedisDriver extends Driver
      * @param string|null $env 场景
      * @return bool|mixed
      */
-    public function log($val, $uid = null, $env = self::DEFAULT, $ord = self::SEQ)
+    public function log($val, $uid = null, $env = self::DEFAULT, $ord = self::SEQ, $step=1)
     {
         if (!$val && !is_numeric($val)) {
             throw new \InvalidArgumentException("记录值不能为空。");
@@ -56,7 +56,7 @@ class RedisDriver extends Driver
 
         switch ($ord) {
             case self::HEAT:
-                $this->logByHeat($key, $val);
+                $this->logByHeat($key, $val, $step);
                 break;
             case self::SEQ:
                 $this->logBySeq($key, $val);
@@ -73,9 +73,8 @@ class RedisDriver extends Driver
      * @param $key
      * @param $val
      */
-    protected function logByHeat($key, $val)
+    protected function logByHeat($key, $val, $step=1)
     {
-        $step = 1;
         // 原子操作
         if ($this->redis_obj->zIncrby($key, $step, $val)) {
 
